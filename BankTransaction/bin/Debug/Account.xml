@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Accounts>
+  <Account>
+    <idAccount>1</idAccount>
+    <accountNumber>1000001</accountNumber>
+    <fullName>le phuoc bac</fullName>
+    <dateOfBirth>321996</dateOfBirth>
+    <phoneNumber>906494880</phoneNumber>
+    <email>lephuocbac@gmail.com</email>
+    <userName>bacday32</userName>
+    <passWord>123123</passWord>
+    <balance>19998888889</balance>
+    <address>da nang</address>
+    <typeAccount>current account</typeAccount>
+  </Account>
+  <Account>
+    <idAccount>2</idAccount>
+    <accountNumber>1000002</accountNumber>
+    <fullName>nguyen van a</fullName>
+    <dateOfBirth>1121994</dateOfBirth>
+    <phoneNumber>777525732</phoneNumber>
+    <email>lephuocbac@gmail.com</email>
+    <userName>nguyenvana</userName>
+    <passWord>123456</passWord>
+    <balance>20000</balance>
+    <address>quang nam</address>
+    <typeAccount>checking account</typeAccount>
+  </Account>
+</Accounts>

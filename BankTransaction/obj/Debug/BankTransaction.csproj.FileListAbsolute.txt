@@ -1,0 +1,12 @@
+c:\users\desktop-win-bac\documents\visual studio 2015\Projects\BankTransaction\BankTransaction\bin\Debug\BankTransaction.exe.config
+c:\users\desktop-win-bac\documents\visual studio 2015\Projects\BankTransaction\BankTransaction\bin\Debug\BankTransaction.exe
+c:\users\desktop-win-bac\documents\visual studio 2015\Projects\BankTransaction\BankTransaction\bin\Debug\BankTransaction.pdb
+c:\users\desktop-win-bac\documents\visual studio 2015\Projects\BankTransaction\BankTransaction\obj\Debug\BankTransaction.csprojResolveAssemblyReference.cache
+c:\users\desktop-win-bac\documents\visual studio 2015\Projects\BankTransaction\BankTransaction\obj\Debug\BankTransaction.exe
+c:\users\desktop-win-bac\documents\visual studio 2015\Projects\BankTransaction\BankTransaction\obj\Debug\BankTransaction.pdb
+C:\Users\Admin\Documents\bank\Bank\BankTransaction\bin\Debug\BankTransaction.exe.config
+C:\Users\Admin\Documents\bank\Bank\BankTransaction\obj\Debug\BankTransaction.exe
+C:\Users\Admin\Documents\bank\Bank\BankTransaction\obj\Debug\BankTransaction.pdb
+C:\Users\Admin\Documents\bank\Bank\BankTransaction\bin\Debug\BankTransaction.exe
+C:\Users\Admin\Documents\bank\Bank\BankTransaction\bin\Debug\BankTransaction.pdb
+C:\Users\Admin\Documents\bank\Bank\BankTransaction\obj\Debug\BankTransaction.csprojResolveAssemblyReference.cache

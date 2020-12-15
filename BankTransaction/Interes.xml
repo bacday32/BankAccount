@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Interes>
+  <interes>
+    <idInteres>001</idInteres>
+    <duration>365</duration>
+    <rate>0.05</rate>
+  </interes>
+  <interes>
+    <idInteres>002</idInteres>
+    <duration>7</duration>
+    <rate>0.001</rate>
+  </interes>
+  <interes>
+    <idInteres>003</idInteres>
+    <duration>30</duration>
+    <rate>0.004</rate>
+  </interes>
+</Interes>
