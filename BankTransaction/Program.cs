@@ -29,37 +29,22 @@ namespace BankTransaction
                     string userName = Convert.ToString(Console.ReadLine());
                     Console.WriteLine("Enter pass word: ");
                     string passWord = Convert.ToString(Console.ReadLine());
-<<<<<<< HEAD
                     Login(userName, passWord);
 
                     Transaction newTransaction = new Transaction();                    
-=======
-                    Login(userName,passWord);
-                    XmlDocument doc = new XmlDocument();
-                    doc.LoadXml("Account.xml");
-                    XmlNode node;
-                    XmlElement root = doc.DocumentElement;
-                    node = root.SelectSingleNode("Account[userName='" + userName + "]");
->>>>>>> 0e834b2c421faa2c99e2fa3d591a1baa9278978a
                     Options();
-                    
                     int number2 = int.Parse(Console.ReadLine());
                     XmlElement element = docAccount.DocumentElement;
                     XmlNode nodeElement = element.SelectSingleNode("Account[userName='" + userName + "']");
                     switch (number2)
                     {
                         case 1:
-<<<<<<< HEAD
                             var toAccount = new double();
                             double.TryParse(nodeElement.ChildNodes[1].InnerText,out toAccount);
                             newTransaction.toAccount = toAccount;
                             Deposit(docTransaction, newTransaction);
                             nodeElement.ChildNodes[8].InnerText = (double.Parse(nodeElement.ChildNodes[8].InnerText) + newTransaction.amount).ToString();
                             docAccount.Save("Account.xml");
-=======
-                            
-                            
->>>>>>> 0e834b2c421faa2c99e2fa3d591a1baa9278978a
                             break;
                         case 2:
                             Withdraw(docTransaction, newTransaction);
@@ -187,11 +172,6 @@ namespace BankTransaction
         }
         static void Login(string userName, string passWord)
         {
-<<<<<<< HEAD
-=======
-            
-
->>>>>>> 0e834b2c421faa2c99e2fa3d591a1baa9278978a
             XElement element = XElement.Load("Account.xml");
             IEnumerable<XElement> accounts = element.Elements();
             foreach (var account in accounts)
@@ -209,10 +189,6 @@ namespace BankTransaction
                     Console.WriteLine("login faild!!!");
                     Console.WriteLine("Please log in again!!!");
                     Console.ReadLine();
-<<<<<<< HEAD
-=======
-                    Login(userName,passWord);
->>>>>>> 0e834b2c421faa2c99e2fa3d591a1baa9278978a
                 }
                 break;
             }
@@ -232,35 +208,16 @@ namespace BankTransaction
         static void Register()
         {
             Account newAccount = new Account();
-<<<<<<< HEAD
             newAccount.AddAccount();
             XmlDocument document = new XmlDocument();
             document.Load("Account.xml");
 
             XmlNodeList node = document.GetElementsByTagName("Account");
-=======
-            XDocument doc = XDocument.Load(@"Account.xml");
-            XElement xElement = new XElement("Account");
-            xElement.SetElementValue("idAccount",newAccount.idAccount);
-            xElement.SetElementValue("acountNumber",newAccount.accountNumber);
-            xElement.SetElementValue("fullName",newAccount.userName);
-            xElement.SetElementValue("dateOfBirth",newAccount.dateOfBirth);
-            xElement.SetElementValue("phoneNumber");
-            xElement.SetElementValue("email");
-            xElement.SetElementValue("userName");
-            xElement.SetElementValue("address");
-
-            //XmlDocument document = new XmlDocument();
-            //document.Load("Account.xml");
-            //XmlNodeList list = document.GetElementsByTagName("Account");
-            //int nodeNumber = list.Count;
->>>>>>> 0e834b2c421faa2c99e2fa3d591a1baa9278978a
 
             newAccount.idAccount = node.Count + 1;
             newAccount.idCustomer = node.Count + 1;
 
 
-<<<<<<< HEAD
             XmlNode nodeChild = document.CreateNode(XmlNodeType.Element, "Account", null);
 
             XmlNode nodeIdAccount = document.CreateElement("idAccount");
@@ -268,16 +225,10 @@ namespace BankTransaction
 
             XmlNode nodeAccountNumber = document.CreateElement("accountNumber");
             nodeAccountNumber.InnerText = (newAccount.idAccount + 1000000).ToString();
-=======
-
-            //Account newAccount = new Account();
-            //newAccount.AddAccount();
->>>>>>> 0e834b2c421faa2c99e2fa3d591a1baa9278978a
 
             XmlNode nodeFullName = document.CreateElement("fullName");
             nodeFullName.InnerText = newAccount.fullName.ToString();
 
-<<<<<<< HEAD
             XmlNode nodeDateOfBirth = document.CreateElement("dateOfBirth");
             nodeDateOfBirth.InnerText = newAccount.dateOfBirth.ToString();
 
@@ -337,55 +288,6 @@ namespace BankTransaction
 
             XmlNode nodeAmount = docTransaction.CreateElement("amount");
             nodeAmount.InnerText = newTransaction.amount.ToString();
-=======
-            //XmlDocument doc = new XmlDocument();
-            //doc.Load("Account.xml");
-            //XmlNode root = doc.SelectSingleNode("Accounts");
-            //XmlElement account = doc.CreateElement("Account");
-            //root.AppendChild(account);
-
-            //XmlElement idAccount = doc.CreateElement("idAccount");
-            ////idAccount.Value = Convert.ToString(nodeNumber ++);
-            //account.AppendChild(idAccount);
-
-            //XmlElement acountNumber = doc.CreateElement("acountNumber");
-            //acountNumber.Value = Convert.ToString(newAccount.accountNumber);
-            //account.AppendChild(acountNumber);
-
-            //XmlElement fullName = doc.CreateElement("fullName");
-            //fullName.Value = Convert.ToString(newAccount.idAccount);
-            //account.AppendChild(fullName);
-
-            //XmlElement dateOfBirth = doc.CreateElement("dateOfBirth");
-            //dateOfBirth.Value = Convert.ToString(newAccount.idAccount);
-            //account.AppendChild(dateOfBirth);
-
-            //XmlElement phoneNumber = doc.CreateElement("phoneNumber");
-            //phoneNumber.Value = Convert.ToString(newAccount.idAccount);
-            //account.AppendChild(phoneNumber);
-
-            //XmlElement email = doc.CreateElement("email");
-            //email.Value = Convert.ToString(newAccount.idAccount);
-            //account.AppendChild(email);
-
-            //XmlElement userName = doc.CreateElement("userName");
-            //userName.Value = Convert.ToString(newAccount.idAccount);
-            //account.AppendChild(userName);
-
-            //XmlElement passWord = doc.CreateElement("passWord");
-            //passWord.Value = Convert.ToString(newAccount.idAccount);
-            //account.AppendChild(passWord);
-
-            //XmlElement balance = doc.CreateElement("balance");
-            //balance.Value = Convert.ToString(newAccount.idAccount);
-            //account.AppendChild(balance);
-
-            //XmlElement address = doc.CreateElement("address");
-            //address.Value = Convert.ToString(newAccount.idAccount);
-            //account.AppendChild(address);
-
-            //Console.WriteLine(doc.InnerXml);
->>>>>>> 0e834b2c421faa2c99e2fa3d591a1baa9278978a
 
             XmlNode nodeDateTine = docTransaction.CreateElement("dateTime");
             nodeDateTine.InnerText = newTransaction.transactionTime.ToString();
