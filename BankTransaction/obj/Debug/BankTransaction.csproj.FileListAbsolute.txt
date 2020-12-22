@@ -10,3 +10,9 @@ C:\Users\Admin\Documents\bank\Bank\BankTransaction\obj\Debug\BankTransaction.pdb
 C:\Users\Admin\Documents\bank\Bank\BankTransaction\bin\Debug\BankTransaction.exe
 C:\Users\Admin\Documents\bank\Bank\BankTransaction\bin\Debug\BankTransaction.pdb
 C:\Users\Admin\Documents\bank\Bank\BankTransaction\obj\Debug\BankTransaction.csprojResolveAssemblyReference.cache
+E:\project\bank _account\BankAccount\BankTransaction\bin\Debug\BankTransaction.exe.config
+E:\project\bank _account\BankAccount\BankTransaction\obj\Debug\BankTransaction.exe
+E:\project\bank _account\BankAccount\BankTransaction\obj\Debug\BankTransaction.pdb
+E:\project\bank _account\BankAccount\BankTransaction\bin\Debug\BankTransaction.exe
+E:\project\bank _account\BankAccount\BankTransaction\bin\Debug\BankTransaction.pdb
+E:\project\bank _account\BankAccount\BankTransaction\obj\Debug\BankTransaction.csprojResolveAssemblyReference.cache

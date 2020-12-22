@@ -1,3 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Savings>
+  <Saving>
+    <id>1</id>
+    <accountNumber>1000001</accountNumber>
+    <duration>1</duration>
+    <amount>5000000</amount>
+    <interes>5000</interes>
+    <timeAccount>12/21/2020 1:23:38 AM</timeAccount>
+  </Saving>
+  <Saving>
+    <id>2</id>
+    <accountNumber>1000001</accountNumber>
+    <duration>1</duration>
+    <amount>5000000</amount>
+    <interes>5000</interes>
+    <timeAccount>12/21/2020 9:37:20 PM</timeAccount>
+  </Saving>
 </Savings>

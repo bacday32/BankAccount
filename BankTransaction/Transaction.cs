@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace BankTransaction
 {
@@ -20,7 +21,7 @@ namespace BankTransaction
         {
 
         }
-        public Transaction(int idTransaction, double balance, string content, float amount, DateTime transactionTime, int fromAccount, int toAccount,string typeTransaction)
+        public Transaction(int idTransaction, double balance, string content, float amount, DateTime transactionTime, int fromAccount, int toAccount, string typeTransaction)
         {
             this.idTransaction = idTransaction;
             this.balance = balance;
@@ -31,37 +32,96 @@ namespace BankTransaction
             this.toAccount = toAccount;
             this.typeTransaction = typeTransaction;
         }
-        public void AddDeposit()
+        public void AddDeposit(int minimum)
         {
-            Console.WriteLine("Enter amount of money: ");
-            this.amount = double.Parse(Console.ReadLine());
-            Console.WriteLine("Enter content transaction: ");
-            this.content = Convert.ToString(Console.ReadLine());
-            this.typeTransaction = "Deposit";
+            do
+            {
+                Console.WriteLine("Enter amount of money: ");
+                this.amount = double.Parse(Console.ReadLine());
+
+                if (this.amount > minimum)
+                {
+                    Console.WriteLine("Enter content transaction: ");
+                    this.content = Convert.ToString(Console.ReadLine());
+                    this.typeTransaction = "Deposit";
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("The amount entered is not valid");
+                    Console.ReadLine();
+                }
+            }
+            while (true);
+
         }
-        public void AddWithDraw()
+        public void AddWithDraw(int minimum)
         {
-            Console.WriteLine("Enter amount of money:   ");
-            this.amount = double.Parse(Console.ReadLine());
-            this.typeTransaction = "Withdraw";
+            do
+            {
+                Console.WriteLine("Enter amount of money:   ");
+                this.amount = double.Parse(Console.ReadLine());
+                if (this.amount >= minimum)
+                {
+                    Console.WriteLine("Enter content transaction: ");
+                    this.content = Convert.ToString(Console.ReadLine());
+                    this.typeTransaction = "Withdraw";
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("The amount entered is not valid");
+                    Console.ReadLine();
+                }
+            }
+            while (true);
+
         }
-        public void AddTransfer()
+        public void AddTransfer(int minium)
         {
-            Console.WriteLine("Enter amount of money: ");
-            this.amount = double.Parse(Console.ReadLine());
-            Console.WriteLine("Enter content transaction: ");
-            this.content = Convert.ToString(Console.ReadLine());
-            Console.WriteLine("Enter receive account: ");
-            this.toAccount = double.Parse(Console.ReadLine());
-            this.typeTransaction = "Transfer";
+            do
+            {
+                Console.WriteLine("Enter amount of money: ");
+                this.amount = double.Parse(Console.ReadLine());
+                if(this.amount >= minium)
+                {
+                    Console.WriteLine("Enter content transaction: ");
+                    this.content = Convert.ToString(Console.ReadLine());
+                    Console.WriteLine("Enter receive account: ");
+                    this.toAccount = double.Parse(Console.ReadLine());
+                    this.typeTransaction = "Transfer";
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("The amount entered is not valid");
+                    Console.ReadLine();
+                }
+                
+
+            }
+            while (true);
+         
         }
         public override string ToString()
         {
-            return this.idTransaction + " , " +  this.balance + " , " + this.content + " , " + this.amount + " , " + this.transactionTime + " , " + this.fromAccount + " , " + this.toAccount;
+            return this.idTransaction + " , " + this.balance + " , " + this.content + " , " + this.amount + " , " + this.transactionTime + " , " + this.fromAccount + " , " + this.toAccount;
         }
-        public void Display()
+        //public void Display()
+        //{
+        //    Console.WriteLine("id transaction : {0},balance :{1}, content : {2},amount : {3},transaction time : {4},from account : {5}, to account : {6}", idTransaction, balance, content, amount, transactionTime, fromAccount, toAccount);
+        //}
+        public void DisplayTransaction()
         {
-            Console.WriteLine("id transaction : {0},balance :{1}, content : {2},amount : {3},transaction time : {4},from account : {5}, to account : {6}", idTransaction, balance, content, amount, transactionTime, fromAccount, toAccount);
+            List<Transaction> listTransaction = new List<Transaction>();
+            XmlTextReader textReader = new XmlTextReader("Transaction.xml");
+            textReader.Read();
+            while (textReader.Read())
+            {
+                textReader.MoveToElement();
+                Console.Write(textReader.Value);
+            }
+            Console.ReadLine();
         }
     }
 }
