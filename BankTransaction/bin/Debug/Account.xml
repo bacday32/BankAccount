@@ -9,7 +9,7 @@
     <email>lephuocbac@gmail.com</email>
     <userName>bacday32</userName>
     <passWord>123123</passWord>
-    <balance>19998888889</balance>
+    <balance>12767807778</balance>
     <address>da nang</address>
     <typeAccount>current account</typeAccount>
   </Account>
@@ -22,8 +22,21 @@
     <email>lephuocbac@gmail.com</email>
     <userName>nguyenvana</userName>
     <passWord>123456</passWord>
-    <balance>20000</balance>
+    <balance>55020000</balance>
     <address>quang nam</address>
+    <typeAccount>checking account</typeAccount>
+  </Account>
+  <Account>
+    <idAccount>3</idAccount>
+    <accountNumber>1000003</accountNumber>
+    <fullName>Pham Thi Diu</fullName>
+    <dateOfBirth>01101994</dateOfBirth>
+    <phoneNumber>0987654321</phoneNumber>
+    <email>phamthidiu@gmail.com</email>
+    <userName>diu123</userName>
+    <passWord>123456</passWord>
+    <balance>1666111111</balance>
+    <address>da nang</address>
     <typeAccount>checking account</typeAccount>
   </Account>
 </Accounts>
