@@ -16,16 +16,6 @@ namespace BankTransaction
         public string phoneNumber { get; set; }        
         public Customer()
         {
-
-        }
-        public Customer(int idCustomer, string fullName, string dateOfBirth, string address, string email, string phoneNumber)
-        {
-            this.idCustomer = idCustomer;
-            this.fullName = fullName;
-            this.dateOfBirth = dateOfBirth;
-            this.address = address;
-            this.email = email;
-            this.phoneNumber = phoneNumber;
         }
         public void AddCustomer()
         {          
@@ -39,7 +29,6 @@ namespace BankTransaction
             this.email = Convert.ToString(Console.ReadLine());
             Console.WriteLine("Enter phone Customer>>>>> ");
             this.phoneNumber = Convert.ToString(Console.ReadLine());
-        }
-      
+        }      
     }
 }

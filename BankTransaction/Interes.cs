@@ -10,22 +10,14 @@ namespace BankTransaction
     class Interes
     {
         XmlDocument doc = new XmlDocument();
-        XmlElement root;
-        string fileName = @"Interes.xml";
+        XmlElement root;       
         public int idInteres { get; set; }
         public int duration { get; set; }
-        public float rate { get; set; }
-
+        public double rate { get; set; }
         public Interes()
         {
-            doc.Load(fileName);
+            doc.Load("Interes.xml");
             root = doc.DocumentElement;
-        }
-        public Interes(int idInteres, int duration, float rate)
-        {
-            this.idInteres = idInteres;
-            this.duration = duration;
-            this.rate = rate;
         }
         public override string ToString()
         {
@@ -35,7 +27,6 @@ namespace BankTransaction
         {
             Console.WriteLine("Enter duration: ");
             this.duration = int.Parse(Console.ReadLine());
-        }
-        
+        }     
     }
 }

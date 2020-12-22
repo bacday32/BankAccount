@@ -17,6 +17,7 @@ namespace BankTransaction
         public double fromAccount { get; set; } = 0;
         public double toAccount { get; set; } = 0;
         public string typeTransaction { get; set; }
+        public bool disable { get; set; } = false;
         public Transaction()
         {
 
@@ -35,7 +36,7 @@ namespace BankTransaction
         public void AddDeposit(int minimum)
         {
             do
-            {
+            {               
                 Console.WriteLine("Enter amount of money: ");
                 this.amount = double.Parse(Console.ReadLine());
 
@@ -53,12 +54,11 @@ namespace BankTransaction
                 }
             }
             while (true);
-
         }
         public void AddWithDraw(int minimum)
         {
             do
-            {
+            {            
                 Console.WriteLine("Enter amount of money:   ");
                 this.amount = double.Parse(Console.ReadLine());
                 if (this.amount >= minimum)
@@ -75,12 +75,11 @@ namespace BankTransaction
                 }
             }
             while (true);
-
         }
         public void AddTransfer(int minium)
         {
             do
-            {
+            {              
                 Console.WriteLine("Enter amount of money: ");
                 this.amount = double.Parse(Console.ReadLine());
                 if(this.amount >= minium)
@@ -97,20 +96,13 @@ namespace BankTransaction
                     Console.WriteLine("The amount entered is not valid");
                     Console.ReadLine();
                 }
-                
-
             }
-            while (true);
-         
+            while (true);        
         }
         public override string ToString()
         {
             return this.idTransaction + " , " + this.balance + " , " + this.content + " , " + this.amount + " , " + this.transactionTime + " , " + this.fromAccount + " , " + this.toAccount;
         }
-        //public void Display()
-        //{
-        //    Console.WriteLine("id transaction : {0},balance :{1}, content : {2},amount : {3},transaction time : {4},from account : {5}, to account : {6}", idTransaction, balance, content, amount, transactionTime, fromAccount, toAccount);
-        //}
         public void DisplayTransaction()
         {
             List<Transaction> listTransaction = new List<Transaction>();
@@ -122,6 +114,6 @@ namespace BankTransaction
                 Console.Write(textReader.Value);
             }
             Console.ReadLine();
-        }
+        }             
     }
 }

@@ -15,27 +15,17 @@ namespace BankTransaction
         public double amount { get; set; }
         public double interesRate { get; set; }
         public DateTime timeStart { get; set; } = DateTime.Now;
-
+        public double rate { get; set; }
         public Saving()
         {
-
-        }
-        public Saving(int idSaving, int accountNUmber, int duration, double amount, double interesRate, DateTime timeStart)
-        {
-            this.idSaving = idSaving;
-            this.accountNumber = accountNumber;
-            this.duration = duration;
-            this.amount = amount;
-            this.interesRate = interesRate;
-            this.timeStart = DateTime.Now;
         }
         public override string ToString()
         {
-            return this.idSaving + " , " + this.accountNumber + " , " + this.duration + " , " + this.amount + " , " + this.interesRate + " , " + this.timeStart;
+            return this.idSaving + " , " + this.accountNumber + " , " + this.duration + " , " + this.amount + " , " + this.interesRate + " , " + this.timeStart +" , "+ this.rate;
         }
         public void Display()
         {
-            Console.WriteLine("id saving : {0},account number :{1}, duration : {2},amount : {3},interesRate : {4},timeStart : {5}", idSaving, accountNumber, duration, amount, interesRate,timeStart);
+            Console.WriteLine("id saving : {0},account number :{1}, duration : {2},amount : {3},interesRate : {4},timeStart : {5},rate : {6}", idSaving, accountNumber, duration, amount, interesRate,timeStart,rate);
         }
         public void AddSaving()
         {
@@ -51,11 +41,14 @@ namespace BankTransaction
                 Console.WriteLine("Enter amount of saving account: ");
                 this.amount = double.Parse(Console.ReadLine());
                 this.interesRate = double.Parse(nodeInteres.ChildNodes[2].InnerText) * this.amount;
+                this.rate = double.Parse(nodeInteres.ChildNodes[2].InnerText);   
             }
             catch (Exception)
             {
-                Console.WriteLine("duration not support");
+                Console.WriteLine("duration not support /nWe support packages 7 , 30 , 60 , 180 , 365 days !!!!");
+                Console.WriteLine("Please Re-login and create saving account");
                 Console.ReadLine();
+                Environment.Exit(0);
             }
         }
     }

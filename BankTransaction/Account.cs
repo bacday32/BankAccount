@@ -9,32 +9,16 @@ namespace BankTransaction
 {
     class Account : Customer
     {
-       
-
         public int idAccount { get; set; }
         public int accountNumber { get; set; }
         public string userName { get; set; }
         public string passWord { get; set; }
         public string typeAccount { get; set; }
         public double balance { get; set; } = 0;
-
+        public bool disable { get; set; } = false;
         public List<Transaction> historyTransaction = new List<Transaction>();
         public Account()
         {
-        }
-        public Account(int idCustomer, string fullName, string dateOfBirth, string address, string email, string phoneNumber, int idAccount, int accountNumber, string passWord, string typeAccount, double balance, List<Transaction> historyTransaction) : base(idCustomer, fullName, dateOfBirth, address, email, phoneNumber)
-        {
-            this.phoneNumber = phoneNumber;
-            this.fullName = fullName;
-            this.address = address;
-            this.email = email;
-            this.dateOfBirth = dateOfBirth;            
-            this.idAccount = idAccount;
-            this.accountNumber = accountNumber;
-            this.userName = userName;
-            this.passWord = passWord;
-            this.typeAccount = typeAccount;
-            this.balance = balance;
         }
         public void AddAccount()
         {
@@ -54,11 +38,12 @@ namespace BankTransaction
             this.phoneNumber = Convert.ToString(Console.ReadLine());
             Console.WriteLine("Enter address: ");
             this.address = Convert.ToString(Console.ReadLine());
+            this.disable = true;
 
-        }     
+        }
         public override string ToString()
         {
-            return this.idCustomer + " , " +this.fullName +" , "+this.dateOfBirth+" , " +this.address+" , " +this.email+" , "+ this.phoneNumber+" , " + this.idAccount + " , " + this.accountNumber + " , " + this.userName + " , " + this.passWord + " , " + this.balance  + " , " + this.historyTransaction;
+            return this.idCustomer + " , " + this.fullName + " , " + this.dateOfBirth + " , " + this.address + " , " + this.email + " , " + this.phoneNumber + " , " + this.idAccount + " , " + this.accountNumber + " , " + this.userName + " , " + this.passWord + " , " + this.balance + " , " + this.disable + " , " + this.historyTransaction;
         }
         public void DisplayAccount()
         {
@@ -68,9 +53,11 @@ namespace BankTransaction
             while (textReader.Read())
             {
                 textReader.MoveToElement();
-                Console.Write(textReader.Value);                            
+                Console.Write(textReader.Value);
             }
             Console.ReadLine();
         }
+
+
     }
 }

@@ -2,27 +2,27 @@
 <Interess>
 	<interes>
 		<idInteres>1</idInteres>
-		<duration>1</duration>
+		<duration>7</duration>
 		<rate>0.001</rate>
 	</interes>
 	<interes>
 		<idInteres>2</idInteres>
-		<duration>4</duration>
+		<duration>30</duration>
 		<rate>0.005</rate>
 	</interes>
-	<interes>
+		<interes>
 		<idInteres>3</idInteres>
-		<duration>24</duration>
-		<rate>0.04</rate>
+		<duration>60</duration>
+		<rate>0.011</rate>
 	</interes>
 	<interes>
 		<idInteres>4</idInteres>
-		<duration>52</duration>
-		<rate>0.1</rate>
+		<duration>180</duration>
+		<rate>0.04</rate>
 	</interes>
 	<interes>
 		<idInteres>5</idInteres>
-		<duration>8</duration>
-		<rate>0.011</rate>
+		<duration>365</duration>
+		<rate>0.1</rate>
 	</interes>
 </Interess>

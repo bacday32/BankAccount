@@ -2,18 +2,29 @@
 <Savings>
   <Saving>
     <id>1</id>
-    <accountNumber>1000001</accountNumber>
-    <duration>1</duration>
-    <amount>5000000</amount>
-    <interes>5000</interes>
-    <timeAccount>12/21/2020 1:23:38 AM</timeAccount>
+    <accountNumber>1000004</accountNumber>
+    <duration>7</duration>
+    <amount>1000000</amount>
+    <interes>7000</interes>
+    <timeAccount>12/22/2020 2:55:13 PM</timeAccount>
+    <rate>1000</rate>
   </Saving>
   <Saving>
-    <id>2</id>
+    <id>3</id>
     <accountNumber>1000001</accountNumber>
-    <duration>1</duration>
-    <amount>5000000</amount>
-    <interes>5000</interes>
-    <timeAccount>12/21/2020 9:37:20 PM</timeAccount>
+    <duration>30</duration>
+    <amount>10000000</amount>
+    <interes>50000</interes>
+    <timeAccount>12/22/2020 4:48:53 PM</timeAccount>
+    <rate>0.005</rate>
+  </Saving>
+  <Saving>
+    <id>4</id>
+    <accountNumber>1000004</accountNumber>
+    <duration>30</duration>
+    <amount>10000000</amount>
+    <interes>50000</interes>
+    <timeAccount>12/22/2020 4:49:17 PM</timeAccount>
+    <rate>0.005</rate>
   </Saving>
 </Savings>
