@@ -20,7 +20,6 @@ namespace BankTransaction
         public bool disable { get; set; } = false;
         public Transaction()
         {
-
         }
         public Transaction(int idTransaction, double balance, string content, float amount, DateTime transactionTime, int fromAccount, int toAccount, string typeTransaction)
         {
