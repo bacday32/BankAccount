@@ -38,7 +38,7 @@ namespace BankTransaction
             this.phoneNumber = Convert.ToString(Console.ReadLine());
             Console.WriteLine("Enter address: ");
             this.address = Convert.ToString(Console.ReadLine());
-            this.disable = true;
+            this.disable = false;
 
         }
         public override string ToString()

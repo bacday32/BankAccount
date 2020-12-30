@@ -17,6 +17,8 @@ namespace BankTransaction
         { DEPOSIT = 1, WITHDRAW, TRANSFER, OPENSAVING, MATUNITYSAVING, FREEZEACCOUNT, DISPLAYTRANSACTION, LOGOUT }
         public enum FreeZeeAccountEnum
         { DISABLE = 1, ACTIVE }
+        public enum AccountEnum
+        { IDACCOUNT,}
         static void Main(string[] args)
         {
             do
