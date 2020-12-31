@@ -18,7 +18,11 @@ namespace BankTransaction
         public enum FreeZeeAccountEnum
         { DISABLE = 1, ACTIVE }
         public enum AccountEnum
-        { IDACCOUNT,}
+        { IDACCOUNT,ACCOUNTNUMBER,FULLNAME,DATEOFBIRTH,PHONENUMBER,EMAIL,USERNAME,PASSWORD,BALANCE,ADDRESS,TYPEACCOUNT,DISABLE}
+        public enum TransactionEnum
+        { ID,BALANCE,CONTENT,AMOUNT,DATETIME,FROMACCOUNT,TOACCOUNT,TYPETRANSACTION}
+        public enum SavingEnum
+        { ID,ACCOUNTNUMBER,DURATION,AMOUNT,INTERES,TIMEACCOUNT,RATE}
         static void Main(string[] args)
         {
             do
@@ -134,7 +138,7 @@ namespace BankTransaction
         }
         static void Deposit(XmlDocument docTransaction, XmlNode nodeAccount, Transaction newTransaction, int minimum)
         {           
-            if (nodeAccount.ChildNodes[11].InnerText == false.ToString())
+            if (nodeAccount.ChildNodes[(int)AccountEnum.DISABLE].InnerText == false.ToString())
             {
                 docTransaction.Load("Transaction.xml");
                 XmlNodeList node = docTransaction.GetElementsByTagName("Transaction");
@@ -171,7 +175,7 @@ namespace BankTransaction
         }
         static void Withdraw(XmlDocument docTransaction, XmlNode nodeAccount, Transaction newTransaction, int minimum)
         {
-            if (nodeAccount.ChildNodes[11].InnerText == false.ToString())
+            if (nodeAccount.ChildNodes[(int)AccountEnum.DISABLE].InnerText == false.ToString())
             {
                 docTransaction.Load("Transaction.xml");
                 XmlNodeList node = docTransaction.GetElementsByTagName("Transaction");
@@ -209,7 +213,7 @@ namespace BankTransaction
         }
         static void Transfer(XmlDocument docTransaction, XmlNode nodeAccount, Transaction newTransaction, int minimum)
         {
-            if (nodeAccount.ChildNodes[11].InnerText == false.ToString())
+            if (nodeAccount.ChildNodes[(int)AccountEnum.DISABLE].InnerText == false.ToString())
             {
                 docTransaction.Load("Transaction.xml");
                 XmlNodeList node = docTransaction.GetElementsByTagName("Transaction");
@@ -247,7 +251,7 @@ namespace BankTransaction
         }
         static void Saving(XmlDocument docTransaction, XmlNode nodeAccount, Transaction newTransaction, Saving newSaving)
         {
-            if (nodeAccount.ChildNodes[11].InnerText == false.ToString())
+            if (nodeAccount.ChildNodes[(int)AccountEnum.DISABLE].InnerText == false.ToString())
             {
                 docTransaction.Load("Transaction.xml");
                 //create node and element
@@ -284,12 +288,12 @@ namespace BankTransaction
         }
         static void DisableAccount(XmlDocument docAccount, XmlNode nodeAccount)
         {
-            nodeAccount.ChildNodes[11].InnerText = "True";
+            nodeAccount.ChildNodes[(int)AccountEnum.DISABLE].InnerText = "True";
             docAccount.Save("Account.xml");
         }
         static void ActiveAccount(XmlDocument docAccount, XmlNode nodeAccount)
         {
-            nodeAccount.ChildNodes[11].InnerText = "False";
+            nodeAccount.ChildNodes[(int)AccountEnum.DISABLE].InnerText = "False";
             docAccount.Save("Account.xml");
         }
         static void DisplayTransaction(XmlDocument docTransaction, XmlNode nodeAccount)
@@ -299,7 +303,7 @@ namespace BankTransaction
             int count = 1;
             foreach (XmlNode node in nodes)
             {
-                if (node.ChildNodes[5].InnerText == nodeAccount.ChildNodes[1].InnerText || node.ChildNodes[6].InnerText == nodeAccount.ChildNodes[1].InnerText)
+                if (node.ChildNodes[(int)TransactionEnum.FROMACCOUNT].InnerText == nodeAccount.ChildNodes[(int)AccountEnum.ACCOUNTNUMBER].InnerText || node.ChildNodes[(int)TransactionEnum.TOACCOUNT].InnerText == nodeAccount.ChildNodes[(int)AccountEnum.ACCOUNTNUMBER].InnerText)
                 {
                     string id = node["id"].InnerText;
                     string balance = node["balance"].InnerText;
@@ -319,24 +323,24 @@ namespace BankTransaction
         {
             double total;
             XmlElement elementSaving = docSaving.DocumentElement;
-            XmlNode nodeElementSaving = elementSaving.SelectSingleNode("Saving[accountNumber='" + nodeAccount.ChildNodes[1].InnerText + "']");
+            XmlNode nodeElementSaving = elementSaving.SelectSingleNode("Saving[accountNumber='" + nodeAccount.ChildNodes[(int)AccountEnum.ACCOUNTNUMBER].InnerText + "']");
             DateTime current = DateTime.Now;
-            DateTime maturity = DateTime.Parse(nodeElementSaving.ChildNodes[5].InnerText);
+            DateTime maturity = DateTime.Parse(nodeElementSaving.ChildNodes[(int)SavingEnum.TIMEACCOUNT].InnerText);
             TimeSpan time = current - maturity;
             try
             {
-                if (time.Days >= double.Parse(nodeElementSaving.ChildNodes[2].InnerText))
+                if (time.Days >= double.Parse(nodeElementSaving.ChildNodes[(int)SavingEnum.DURATION].InnerText))
                 {
-                    total = double.Parse(nodeElementSaving.ChildNodes[3].InnerText) + double.Parse(nodeElementSaving.ChildNodes[4].InnerText);
-                    nodeAccount.ChildNodes[8].InnerText = Convert.ToString(double.Parse(nodeAccount.ChildNodes[8].InnerText) + total);
+                    total = double.Parse(nodeElementSaving.ChildNodes[(int)SavingEnum.AMOUNT].InnerText) + double.Parse(nodeElementSaving.ChildNodes[(int)SavingEnum.INTERES].InnerText);
+                    nodeAccount.ChildNodes[(int)AccountEnum.BALANCE].InnerText = Convert.ToString(double.Parse(nodeAccount.ChildNodes[(int)AccountEnum.BALANCE].InnerText) + total);
                     elementSaving.RemoveChild(nodeElementSaving);
                     docSaving.Save("Saving.xml");
                     docAccount.Save("Account.xml");
                 }
-                else if (time.Days < double.Parse(nodeElementSaving.ChildNodes[2].InnerText))
+                else if (time.Days < double.Parse(nodeElementSaving.ChildNodes[(int)SavingEnum.DURATION].InnerText))
                 {
-                    total = double.Parse(nodeElementSaving.ChildNodes[3].InnerText) + double.Parse(nodeElementSaving.ChildNodes[4].InnerText) * time.Days / double.Parse(nodeElementSaving.ChildNodes[2].InnerText);
-                    nodeAccount.ChildNodes[8].InnerText = Convert.ToString(double.Parse(nodeAccount.ChildNodes[8].InnerText) + total);
+                    total = double.Parse(nodeElementSaving.ChildNodes[(int)SavingEnum.AMOUNT].InnerText) + double.Parse(nodeElementSaving.ChildNodes[(int)SavingEnum.INTERES].InnerText) * time.Days / double.Parse(nodeElementSaving.ChildNodes[(int)SavingEnum.DURATION].InnerText);
+                    nodeAccount.ChildNodes[8].InnerText = Convert.ToString(double.Parse(nodeAccount.ChildNodes[(int)AccountEnum.BALANCE].InnerText) + total);
                     elementSaving.RemoveChild(nodeElementSaving);
                     docSaving.Save("Saving.xml");
                     docAccount.Save("Account.xml");
@@ -380,7 +384,7 @@ namespace BankTransaction
                         XmlElement elementAccount = docAccount.DocumentElement;
                         XmlNode nodeElement = elementAccount.SelectSingleNode("Account[userName='" + userName + "']");
                         var fromAccount = new double();
-                        double.TryParse(nodeElement.ChildNodes[1].InnerText, out fromAccount);
+                        double.TryParse(nodeElement.ChildNodes[(int)AccountEnum.ACCOUNTNUMBER].InnerText, out fromAccount);
                         OptionEnum option = (OptionEnum)int.Parse(Console.ReadLine());
                         switch (option)
                         {
@@ -388,7 +392,7 @@ namespace BankTransaction
                                 newTransaction.toAccount = fromAccount;
                                 newTransaction.fromAccount = fromAccount;
                                 Deposit(docTransaction, nodeElement, newTransaction, minimum);
-                                nodeElement.ChildNodes[8].InnerText = (double.Parse(nodeElement.ChildNodes[8].InnerText) + newTransaction.amount).ToString();
+                                nodeElement.ChildNodes[8].InnerText = (double.Parse(nodeElement.ChildNodes[(int)AccountEnum.BALANCE].InnerText) + newTransaction.amount).ToString();
                                 docAccount.Save("Account.xml");
                                 Console.WriteLine("Deposit successful!!!");
                                 Console.ReadLine();
@@ -397,9 +401,9 @@ namespace BankTransaction
                                 newTransaction.toAccount = fromAccount;
                                 newTransaction.fromAccount = fromAccount;
                                 Withdraw(docTransaction, nodeElement, newTransaction, minimum);
-                                if ((double.Parse(nodeElement.ChildNodes[8].InnerText) - minimum) > newTransaction.amount)
+                                if ((double.Parse(nodeElement.ChildNodes[(int)AccountEnum.BALANCE].InnerText) - minimum) > newTransaction.amount)
                                 {
-                                    nodeElement.ChildNodes[8].InnerText = (double.Parse(nodeElement.ChildNodes[8].InnerText) - newTransaction.amount).ToString();
+                                    nodeElement.ChildNodes[(int)AccountEnum.BALANCE].InnerText = (double.Parse(nodeElement.ChildNodes[(int)AccountEnum.BALANCE].InnerText) - newTransaction.amount).ToString();
                                     docAccount.Save("Account.xml");
                                     Console.WriteLine("Withdraw successful!!!");
                                     Console.ReadLine();
@@ -413,10 +417,10 @@ namespace BankTransaction
                                 newTransaction.fromAccount = fromAccount;
                                 Transfer(docTransaction, nodeElement, newTransaction, minimum);
                                 XmlNode nodeToAccount = elementAccount.SelectSingleNode("Account[accountNumber='" + newTransaction.toAccount.ToString() + "']");
-                                if ((double.Parse(nodeElement.ChildNodes[8].InnerText) - minimum) > newTransaction.amount)
+                                if ((double.Parse(nodeElement.ChildNodes[(int)AccountEnum.BALANCE].InnerText) - minimum) > newTransaction.amount)
                                 {
-                                    nodeToAccount.ChildNodes[8].InnerText = (double.Parse(nodeToAccount.ChildNodes[8].InnerText) + newTransaction.amount).ToString();
-                                    nodeElement.ChildNodes[8].InnerText = (double.Parse(nodeElement.ChildNodes[8].InnerText) - newTransaction.amount).ToString();
+                                    nodeToAccount.ChildNodes[(int)AccountEnum.BALANCE].InnerText = (double.Parse(nodeToAccount.ChildNodes[(int)AccountEnum.BALANCE].InnerText) + newTransaction.amount).ToString();
+                                    nodeElement.ChildNodes[(int)AccountEnum.BALANCE].InnerText = (double.Parse(nodeElement.ChildNodes[(int)AccountEnum.BALANCE].InnerText) - newTransaction.amount).ToString();
                                     docAccount.Save("Account.xml");
                                     Console.WriteLine("Transfer successful!!!");
                                     Console.ReadLine();
@@ -431,14 +435,14 @@ namespace BankTransaction
                                 {
                                     Saving newSaving = new Saving();
                                     newSaving.AddSaving();
-                                    if (newSaving.amount < double.Parse(nodeElement.ChildNodes[8].InnerText) - minimum)
+                                    if (newSaving.amount < double.Parse(nodeElement.ChildNodes[(int)AccountEnum.BALANCE].InnerText) - minimum)
                                     {
                                         Saving(docTransaction, nodeElement, newTransaction, newSaving);
                                         XmlNodeList node = docSaving.GetElementsByTagName("Saving");
                                         int id = 0;
                                         for (int i = 0; i < node.Count; i++)
                                         {
-                                            id = int.Parse(node[node.Count - 1].ChildNodes[0].InnerText) + 1;
+                                            id = int.Parse(node[node.Count - 1].ChildNodes[(int)SavingEnum.ID].InnerText) + 1;
                                         }
                                         newSaving.idSaving = id;
                                         //create node and element
@@ -446,7 +450,7 @@ namespace BankTransaction
                                         XmlNode nodeId = docSaving.CreateElement("id");
                                         nodeId.InnerText = newSaving.idSaving.ToString();
                                         XmlNode nodeAccount = docSaving.CreateElement("accountNumber");
-                                        nodeAccount.InnerText = nodeElement.ChildNodes[1].InnerText;
+                                        nodeAccount.InnerText = nodeElement.ChildNodes[(int)AccountEnum.ACCOUNTNUMBER].InnerText;
                                         XmlNode nodeDuration = docSaving.CreateElement("duration");
                                         nodeDuration.InnerText = newSaving.duration.ToString();
                                         XmlNode nodeAmount = docSaving.CreateElement("amount");
@@ -468,7 +472,7 @@ namespace BankTransaction
                                         //append node in root and save file
                                         docSaving.DocumentElement.AppendChild(nodeChild);
                                         docSaving.Save("Saving.xml");
-                                        nodeElement.ChildNodes[8].InnerText = (double.Parse(nodeElement.ChildNodes[8].InnerText) - newSaving.amount).ToString();
+                                        nodeElement.ChildNodes[(int)AccountEnum.BALANCE].InnerText = (double.Parse(nodeElement.ChildNodes[(int)AccountEnum.BALANCE].InnerText) - newSaving.amount).ToString();
                                         docAccount.Save("Account.xml");
                                         Console.WriteLine("Open saving account successful!!!!!");
                                         Console.ReadLine();

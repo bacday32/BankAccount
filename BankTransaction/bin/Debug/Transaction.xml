@@ -872,4 +872,14 @@
     <toAccount>1000001</toAccount>
     <typeTransaction>Withdraw</typeTransaction>
   </Transaction>
+  <Transaction>
+    <id>89</id>
+    <balance>1000000.00</balance>
+    <content>bac chuyen khoan</content>
+    <amount>1000000</amount>
+    <dateTime>12/31/2020 5:46:52 PM</dateTime>
+    <fromAccount>1000001</fromAccount>
+    <toAccount>1000001</toAccount>
+    <typeTransaction>Deposit</typeTransaction>
+  </Transaction>
 </Transactions>
