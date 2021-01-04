@@ -59,7 +59,7 @@ namespace BankTransaction
         }
         public static void Login(string userName, string passWord)
         {
-            int count = 0;
+            var valid = false;
             XElement elementAccount = XElement.Load("Account.xml");
             IEnumerable<XElement> accounts = elementAccount.Elements();
             foreach (var account in accounts)
@@ -70,11 +70,11 @@ namespace BankTransaction
                 {
                     Console.WriteLine("LOGIN SUCCESSFUL");
                     Console.ReadLine();
-                    count++;
+                    valid = true;
                     break;
                 }
             }
-            if (count == 0)
+            if (valid == false)
             {
                 Console.WriteLine("login faild!!!");
                 Console.WriteLine("Please log in again!!!");
